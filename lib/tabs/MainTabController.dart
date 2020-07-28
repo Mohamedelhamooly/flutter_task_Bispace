@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
@@ -14,13 +13,12 @@ class MainController extends StatefulWidget {
 }
 
 class _MainControllerState extends State<MainController> {
-  int _selectedIndex = 1;
-  String currentTitle = "Home";
+  int _selectedIndex = 3;
   List<StatefulWidget> widgets = [
     HomeItemScreen(),
-    AchievementScreen(),
     WishlistScreen(),
     MyCoursesScreen(),
+    AchievementScreen(),
     MoreScreen()
   ];
 
@@ -33,8 +31,6 @@ class _MainControllerState extends State<MainController> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
         body: widgets[_selectedIndex],
         bottomNavigationBar: ConvexAppBar(
@@ -70,35 +66,8 @@ class _MainControllerState extends State<MainController> {
           backgroundColor: Color(0xffEDF5F8),
           style: TabStyle.react,
           initialActiveIndex: 3,
-          //optional, default as 0
           onTap: (int i) {
             _onItemTapped(i);
-//            Switch(value: i, onChanged: null){}
-            if(i==0){
-              setState(() {
-                currentTitle = "Home";
-              });
-            }
-            else if(i==1){
-              setState(() {
-                currentTitle = "Bidding";
-              });
-            }
-            else if(i==2){
-              setState(() {
-                currentTitle = "Create Order";
-              });
-            }
-            else if(i==3){
-              setState(() {
-                currentTitle = "My Orders";
-              });
-            }
-            else if(i==4){
-              setState(() {
-                currentTitle = "Profile";
-              });
-            }
           },
         ));
   }
